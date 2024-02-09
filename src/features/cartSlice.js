@@ -109,6 +109,7 @@ const cartSlice = createSlice({
     .addCase(cartItems.fulfilled, (state, action) => {
       state.status = "success";
       state.cart = action.payload;
+      state.cartCount = action.payload.length;
     })
     .addCase(removeCartItem.fulfilled, (state) => {
         state.status = ' item removed';

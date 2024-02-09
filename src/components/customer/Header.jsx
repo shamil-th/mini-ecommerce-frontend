@@ -10,9 +10,10 @@ import Badge from "@mui/material/Badge";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { Box } from "@mui/system";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Header = () => {
-  let cartItemCount = 2;
+    const cartCount = useSelector((state) => state.cart.cartCount)
   let navigate = useNavigate();
   const gotoCart = () => {
     navigate("/cart");
@@ -62,7 +63,7 @@ const Header = () => {
             />
           </div>
           <Badge
-            badgeContent={cartItemCount}
+            badgeContent={cartCount}
             color="secondary"
             onClick={gotoCart}
             sx={{ "&:hover": { cursor: "pointer" } }}

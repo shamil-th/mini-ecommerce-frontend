@@ -9,7 +9,7 @@ import Price from "./Price";
 import Button from "@mui/material/Button";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import { addToCart } from "../../../features/cartSlice";
+import { addToCart, cartItems } from "../../../features/cartSlice";
 
 const ItemProfile = () => {
   const product = useSelector((state) => state.products.product);
@@ -27,7 +27,7 @@ const ItemProfile = () => {
   const count = 1;
   const images = product.images;
 
-  const addItemtoCart = () => {
+  const addItemtoCart = async() => {
     const data = {
       name,
       discountedPrice,
@@ -36,7 +36,8 @@ const ItemProfile = () => {
       count,
       images
     };
-    dispatch(addToCart(data));
+    await dispatch(addToCart(data));
+    dispatch(cartItems())
     setIsCart(true);
   };
 
