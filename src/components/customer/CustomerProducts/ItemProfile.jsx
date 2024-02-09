@@ -34,7 +34,7 @@ const ItemProfile = () => {
       spec,
       desc,
       count,
-      images
+      images: images.length > 0 ? [images[0]] : [] 
     };
     await dispatch(addToCart(data));
     dispatch(cartItems())

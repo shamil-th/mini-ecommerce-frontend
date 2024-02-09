@@ -11,7 +11,7 @@ export const addToCart = createAsyncThunk(
     formData.append("specification", data.spec);
     formData.append("description", data.desc);
     formData.append("count", data.count);
-    data.images.map((image) => formData.append("images", image));
+    formData.append("images", data.images[0]);
 
     try {
       const response = await axios.post(
